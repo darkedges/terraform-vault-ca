@@ -1,0 +1,17 @@
+
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: certmanager-binding
+  namespace: default
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: certmanager
+  namespace: default
+- kind: ServiceAccount
+  name: darkedges-forgerock-certmanager
+  namespace: default

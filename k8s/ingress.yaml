@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: darkedges-forgerock-vault-ingress
+  namespace: default
+  annotations:
+    cert-manager.io/issuer: "vault-issuer"
+spec:
+  tls:
+  - hosts:
+    - vault.darkedges.com
+    secretName: darkedges-forgerock-vault-tls
+  rules:
+  - host: vault.darkedges.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: darkedges-forgerock-vault-ui
+            port:
+              number: 8200
+  ingressClassName: nginx

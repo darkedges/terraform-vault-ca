@@ -1,7 +1,4 @@
-.terraform
-**/terraform.tfstate*
 .terraform.lock.hcl
-star_example_com.key
-star_example_com.txt
-test.out.txt
-test.txt
+.terraform
+terraform.tfstate
+terraform-wznl-ca/terraform.tfstate.backup
